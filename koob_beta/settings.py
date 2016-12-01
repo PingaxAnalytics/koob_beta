@@ -77,7 +77,7 @@ SECRET_KEY = '+u=-i^cg2!dyn$8yv129h*tzs0m)m=dln0bgh7zqae9p58kdjr'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [    'localhost','http://koobbeta.azurewebsites.net']
+ALLOWED_HOSTS = [    'localhost','koobbeta.azurewebsites.net']
 
 
 # Application definition
@@ -101,7 +101,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrame',
 ]
 
 ROOT_URLCONF = 'koob_beta.urls'
