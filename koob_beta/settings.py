@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 
+from os import path
+PROJECT_ROOT = path.dirname(path.abspath(path.dirname(__file__)))
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,7 +29,7 @@ SECRET_KEY = '+u=-i^cg2!dyn$8yv129h*tzs0m)m=dln0bgh7zqae9p58kdjr'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [    'localhost',]
 
 
 # Application definition
@@ -120,3 +124,32 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    }
+}
+
+# Specify the default test runner.
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'
+
