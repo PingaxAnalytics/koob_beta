@@ -31,7 +31,7 @@ SECRET_KEY = '+u=-i^cg2!dyn$8yv129h*tzs0m)m=dln0bgh7zqae9p58kdjr'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [    'localhost',]
+ALLOWED_HOSTS = [    'localhost','http://koobbeta.azurewebsites.net']
 
 
 # Application definition
