@@ -101,7 +101,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrame',
+    # 'django.middleware.clickjacking.XFrame',
 ]
 
 ROOT_URLCONF = 'koob_beta.urls'
