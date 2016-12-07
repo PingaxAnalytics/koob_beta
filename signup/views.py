@@ -32,21 +32,35 @@ def register(request):
         '''
         user_input = request.data
 
-        client_id = user_input.get('client_id')
-        client_secret = user_input.get('client_id')
-        email = user_input.get('client_id')
+        # Score primary connection information
+        temporaryCredentialsRequestUrl = user_input.get('temporaryCredentialsRequestUrl') 
+        adminAuthorizationUrl = user_input.get('adminAuthorizationUrl')
+        accessTokenRequestUrl = user_input.get('accessTokenRequestUrl')
+        apiUrl = user_input.get('apiUrl')
+        consumerKey = user_input.get('consumerKey')
+        consumerSecret = user_input.get('consumerSecret')
+
+        email = user_input.get('email')
         webstore_url = user_input.get('webstore_url')
         registered_at = user_input.get(time.time())
         webstore_platform = user_input.get('webstore_platform')
 
         try:
-            user = Users(client_id=client_id,
-                         client_secret=client_secret,
+            user = Users(
                          email=email,
                          webstore_url=webstore_url,
                          registered_at=registered_at,
-                         webstore_platform=webstore_platform)
+                         webstore_platform=webstore_platform,
+
+                         temporaryCredentialsRequestUrl=temporaryCredentialsRequestUrl,
+                         adminAuthorizationUrl=adminAuthorizationUrl,
+                         accessTokenRequestUrl=accessTokenRequestUrl,
+                         apiUrl=apiUrl,
+                         consumerKey=consumerKey,
+                         consumerSecret=consumerSecret
+                         )
             user.save()
+
             return Response({"success":True})
 
         except Exception as e:
@@ -59,6 +73,5 @@ def get_all_users(request):
     for each_user in all_users:
         # each_user.webstore_url
         user_web.append(each_user.webstore_url)
-    # print 
 
     return Response({"registered_stores":user_web})

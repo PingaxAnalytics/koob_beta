@@ -11,6 +11,15 @@ from django.db import models
 
 class Users(models.Model):
 
+    # Primary Store connection details
+    temporaryCredentialsRequestUrl = models.CharField(max_length=254,null=True)
+    adminAuthorizationUrl = models.CharField(max_length=254,null=True)
+    accessTokenRequestUrl = models.CharField(max_length=254,null=True)
+    apiUrl = models.CharField(max_length=254,null=True)
+    consumerKey = models.CharField(max_length=254,null=True)
+    consumerSecret = models.CharField(max_length=254,null=True)
+
+    # Store details
     password = models.CharField(max_length=128)
     last_login = models.DateTimeField(blank=True, null=True)
     is_superuser = models.IntegerField(null=True)
@@ -18,8 +27,6 @@ class Users(models.Model):
     last_name = models.CharField(max_length=30)
     email = models.CharField(max_length=254)
     registered_at = models.IntegerField(null=True)
-    client_id = models.CharField(max_length=254)
-    client_secret = models.CharField(max_length=254)  
     webstore_url = models.CharField(max_length=254,null=True)
     webstore_platform = models.CharField(max_length=254,null=True)
 
